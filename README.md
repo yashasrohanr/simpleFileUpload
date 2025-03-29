@@ -25,8 +25,6 @@ In `server` folder, Use following commands for various tasks -
 - Run `npm run build` to build the application
 - Run `npm start` to start the server
 
-![alt text](image-1.png)
-
 ## To Use Cloud Functionality
 
 The app supports both local file storage and AWS S3 cloud storage. To enable cloud functionality (S3), add the following optional variables in your `.env` file:
