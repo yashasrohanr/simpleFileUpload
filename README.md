@@ -34,4 +34,7 @@ The app supports both local file storage and AWS S3 cloud storage. To enable clo
 - `AWS_REGION` The AWS region where your S3 bucket is hosted (e.g., us-east-1, eu-west-1).
 - `AWS_S3_BUCKET_NAME` The name of your S3 bucket where files will be stored and retrieved from.
 
-Make sure these variables are added to your environment configuration to enable S3-based file handling.
+
+- ![img.png](img.png)
+
+- Make sure these variables are added to your environment configuration to enable S3-based file handling.
