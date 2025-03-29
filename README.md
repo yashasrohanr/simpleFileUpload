@@ -35,6 +35,5 @@ The app supports both local file storage and AWS S3 cloud storage. To enable clo
 - `AWS_S3_BUCKET_NAME` The name of your S3 bucket where files will be stored and retrieved from.
 
 
-- ![img.png](img.png)
-
+  ![Attached Screenshot](pic.png)
 - Make sure these variables are added to your environment configuration to enable S3-based file handling.
