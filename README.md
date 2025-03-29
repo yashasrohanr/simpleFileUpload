@@ -36,4 +36,3 @@ The app supports both local file storage and AWS S3 cloud storage. To enable clo
 
 
   ![Attached Screenshot](pic.png)
-- Make sure these variables are added to your environment configuration to enable S3-based file handling.
