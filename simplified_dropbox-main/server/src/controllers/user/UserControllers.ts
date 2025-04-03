@@ -90,4 +90,22 @@ export default class UserControllers {
         Response.okError(res, err.message);
       });
   }
+
+  public static searchFiles(req: express.Request, res: express.Response): void {
+    const query = req.query.query as string;
+    if (!query) {
+      Response.badRequest(res, "Search query is required");
+      return;
+    }
+
+    UserService.searchFiles(query)
+    .then((data) => {
+        Response.ok(res, data);
+    })
+    .catch((err) => {
+        console.error("Search Error:", err);
+        Response.okError(res, err.message);
+    });
+
+  }
 }

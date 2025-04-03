@@ -14,6 +14,7 @@ export default class UserRoutes {
     private initialize() {
         this.router.get("/getList", UserControllers.getFileList);
         this.router.get("/download/:_fileName", UserControllers.downloadFile);
+        this.router.get("/search", UserControllers.searchFiles);
         this.router.post(
           "/upload",
           (req: Request, res: Response, next: NextFunction) => {

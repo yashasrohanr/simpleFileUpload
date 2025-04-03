@@ -6,6 +6,7 @@ import tmp from "tmp"
 import { Readable } from "stream";
 import Config from "../config";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { IFile } from "../db/models/Files";
 
 export default class UserService {
     public static s3: S3Client = new S3Client({
@@ -95,6 +96,19 @@ export default class UserService {
         catch(err) {
             throw err;
         }
+    }
+
+    public static async searchFiles(query: string): Promise<IFile[]> {
+      try {
+        const files = await Database.FIle.find({
+          _name: { $regex: query, $options: "i"}
+        });
+        
+        return files;
+      } catch(err) {
+        console.error("Error searching files:", err);
+        throw new Error("Failed to search files");
+      }
     }
 
     public static checkEnvVariables(): boolean {
