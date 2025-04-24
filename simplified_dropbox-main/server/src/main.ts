@@ -13,7 +13,8 @@ class Server {
             "X-Requested-With",
             "Content-Type",
             "Accept",
-            "X-Access-Token"
+            "X-Access-Token",
+            "x-username",
         ],
         credentials: true,
         methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
@@ -36,7 +37,6 @@ class Server {
         });
     }
 
-
     private applyProcessLevelHandlers(): void {
         process
             .on("unhandledRejection", this.processHandler)
@@ -44,10 +44,16 @@ class Server {
     }
 
     private processHandler(err: Error, origin: string): void {
-        console.error(origin === "uncaughtException" ? "uncaught exception" : "unhandled rejection" , {
-            error: err ? err.message : "",
-            stack: err && err.stack ? err.stack.toString() : ""
-        });
+        console.error(
+            origin === "uncaughtException"
+                ? "uncaught exception"
+                : "unhandled rejection",
+            {
+                error: err ? err.message : "",
+                stack: err && err.stack ? err.stack.toString() : "",
+            }
+        );
+
         process.exit(1);
     }
 
@@ -56,12 +62,15 @@ class Server {
             this.express.use(require("morgan")("dev"));
         }
         require("./controllers").Routes.forEach((routes: any) => {
-            this.express.use("/", routes.router);
+            console.log("Mounting:", routes);
+            if (routes.router) {
+                this.express.use("/", routes.router);
+            } else {
+                console.warn("Skipping route with missing .router:", routes);
+            }
         });
     }
-
 }
-
 
 try {
     new Server().init();
