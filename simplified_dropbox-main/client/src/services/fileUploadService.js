@@ -7,10 +7,7 @@ export const uploadFile = async (file) => {
         formData.append("file", file); // Key must match multer's field name
 
         const response = await apiClient.post("/upload", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "x-username": "rohan",
-            },
+            headers: { "Content-Type": "multipart/form-data" },
         });
 
         return response.data;

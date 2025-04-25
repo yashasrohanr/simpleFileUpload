@@ -1,7 +1,7 @@
 import UserRoutes from "./user/UserRoutes";
 import HealthRoutes from "./health/HealthRoutes";
 import UploadRoutes from "./upload/UploadRoutes";
-
+import AuthRoutes from "./auth/AuthRoutes";
 let uploadRoutes;
 try {
     uploadRoutes = new UploadRoutes();
@@ -13,5 +13,6 @@ try {
 export const Routes = [
     new HealthRoutes(),
     new UserRoutes(),
-    uploadRoutes, // keep it in the list, even if it's undefined
+    uploadRoutes, // keep it in the list, even if it's undefined,
+    new AuthRoutes(),
 ];
