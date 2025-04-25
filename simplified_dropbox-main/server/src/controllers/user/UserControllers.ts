@@ -115,4 +115,26 @@ export default class UserControllers {
                 Response.okError(res, err.message);
             });
     }
+
+    public static async deleteFile(
+        req: express.Request,
+        res: express.Response
+    ) {
+        try {
+            const fileName = req.params._fileName;
+            console.log(`delete file fileName = ${fileName}`);
+            const result = await UserService.deleteFile(fileName);
+            console.log(`delete file result = ${result}`);
+            res.status(200).json({ success: true, message: result });
+        } catch (err) {
+            console.error("Delete failed:", err);
+            res.status(500).json({
+                success: false,
+                error:
+                    err instanceof Error
+                        ? err.message
+                        : "Internal Server Error",
+            });
+        }
+    }
 }

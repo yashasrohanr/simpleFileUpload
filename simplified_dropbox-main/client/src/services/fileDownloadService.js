@@ -64,3 +64,18 @@ export const downloadFile = async (fileName, actionType) => {
         throw error;
     }
 };
+
+export const deleteFile = async (fileName) => {
+    try {
+        const response = await apiClient.delete(`/delete/${fileName}`, {
+            headers: {
+                "x-username": "rohan",
+            },
+        });
+
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting file:", error);
+        throw error;
+    }
+};

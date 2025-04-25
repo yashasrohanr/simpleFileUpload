@@ -28,6 +28,7 @@ export default class UserRoutes {
         this.router.get("/search", UserControllers.searchFiles);
         this.router.use(rateLimitMiddleWare as express.RequestHandler);
         this.router.get("/download/:_fileName", UserControllers.downloadFile);
+        this.router.delete("/delete/:_fileName", UserControllers.deleteFile);
 
         this.router.post(
             "/upload",
