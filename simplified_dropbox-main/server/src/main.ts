@@ -58,12 +58,13 @@ class Server {
     }
 
     private mountRoutes() {
+        this.express.use(express.json());
         if (Config.NODE_ENV === "development") {
             this.express.use(require("morgan")("dev"));
         }
         require("./controllers").Routes.forEach((routes: any) => {
             console.log("Mounting:", routes);
-            if (routes.router) {
+            if (routes?.router) {
                 this.express.use("/", routes.router);
             } else {
                 console.warn("Skipping route with missing .router:", routes);

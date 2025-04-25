@@ -11,7 +11,7 @@ function rateLimitMiddleware(
     if (!userRateLimit.allowUser(username)) {
         return res.status(429).json({
             success: false,
-            message: "Rate limit exceeded. Please try again later.",
+            message: `Rate limit exceeded for ${username}. Please try again later.`,
         });
     }
 
