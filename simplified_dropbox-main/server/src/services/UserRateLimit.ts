@@ -42,6 +42,7 @@ class RateLimitService {
         }
 
         console.log(`${username} has exhausted their rate limit`);
+        console.log(`${username} token left = ${JSON.stringify(bucket)}`);
         return false;
     }
 }
